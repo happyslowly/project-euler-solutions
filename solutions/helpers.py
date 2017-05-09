@@ -1,6 +1,21 @@
 import sys
 import math
 
+
+def perf(func):
+    import timeit, inspect
+    def decorated(*args, **kwargs):
+        start = timeit.default_timer() * 1000
+        result = func(*args, **kwargs)
+        end = timeit.default_timer() * 1000
+        print("%s(%s) took %dms to complete" % (
+            func.__name__,
+            ','.join([str(x) for x in args]),
+            int(round(end - start))))
+        return result
+    return decorated
+
+
 def verify(a, b, msg=None):
     try:
         assert a == b

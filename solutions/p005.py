@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 from functools import reduce
 
-from solutions.helpers import get_factors, verify
+from solutions.helpers import get_factors, verify, perf
 
 
-def p005(n):
+@perf
+def p005_naive(n):
     factors = get_factors(n)
     for x in range(n-1, 0, -1):
         f = get_factors(x)
@@ -14,5 +15,5 @@ def p005(n):
         factors.extend(f)
     return reduce(lambda x, y: x * y, factors)
 
-verify(2520, p005(10))
-verify(232792560, p005(20))
+verify(2520, p005_naive(10))
+verify(232792560, p005_naive(20))

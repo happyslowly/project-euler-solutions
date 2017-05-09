@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from solutions.helpers import verify
+from solutions.helpers import verify, perf
 
 
 def fibonacci(n):
@@ -14,8 +14,9 @@ def fibonacci(n):
     return numbers
 
 
-def p002(n):
+@perf
+def p002_naive(n):
     return sum([x for x in fibonacci(n) if x % 2 == 0])
 
 
-verify(4613732, p002(4000000))
+verify(4613732, p002_naive(4000000))
