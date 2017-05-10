@@ -25,7 +25,9 @@ def verify(a, b, msg=None):
 
 
 def is_prime(n):
-    for x in range(2, int(math.sqrt(n)) + 1):
+    if n == 2: return True
+    if n % 2 == 0: return False
+    for x in range(3, int(math.sqrt(n)) + 1, 2):
         if n % x == 0: return False
     return True
 
